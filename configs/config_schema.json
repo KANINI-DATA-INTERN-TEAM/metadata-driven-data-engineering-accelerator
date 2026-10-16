@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Metadata-Driven Accelerator table configuration",
+  "type": "object",
+  "required": [
+    "table_name",
+    "source",
+    "load_mode",
+    "schema"
+  ],
+  "properties": {
+    "table_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "format",
+        "path"
+      ],
+      "properties": {
+        "format": {
+          "enum": [
+            "csv",
+            "json"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "options": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "load_mode": {
+      "enum": [
+        "append",
+        "scd2"
+      ]
+    },
+    "business_keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tracked_columns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "schema": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "type"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "string",
+              "integer",
+              "decimal",
+              "boolean",
+              "date",
+              "timestamp"
+            ]
+          },
+          "nullable": {
+            "type": "boolean"
+          },
+          "required": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "quality_rules": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": false
+}

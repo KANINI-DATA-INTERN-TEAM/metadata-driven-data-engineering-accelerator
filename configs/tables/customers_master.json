@@ -1,0 +1,54 @@
+{
+  "table_name": "customers",
+  "description": "Synthetic customer master used to demonstrate SCD Type 2.",
+  "source": {
+    "format": "csv",
+    "path": "sample_data/batch_1/customers.csv",
+    "options": {
+      "header": true
+    }
+  },
+  "load_mode": "scd2",
+  "business_keys": [
+    "customer_id"
+  ],
+  "tracked_columns": [
+    "customer_name",
+    "city"
+  ],
+  "schema": [
+    {
+      "name": "customer_id",
+      "type": "integer",
+      "nullable": false,
+      "required": true
+    },
+    {
+      "name": "customer_name",
+      "type": "string",
+      "nullable": false,
+      "required": true
+    },
+    {
+      "name": "city",
+      "type": "string",
+      "nullable": true,
+      "required": false
+    }
+  ],
+  "quality_rules": [
+    {
+      "rule": "not_null",
+      "columns": [
+        "customer_id",
+        "customer_name"
+      ]
+    },
+    {
+      "rule": "unique",
+      "columns": [
+        "customer_id"
+      ]
+    }
+  ]
+}

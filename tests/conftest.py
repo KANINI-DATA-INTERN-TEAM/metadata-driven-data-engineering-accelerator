@@ -1,0 +1,11 @@
+"""Shared fixtures for portable unit tests."""
+
+from pathlib import Path
+import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+@pytest.fixture
+def project_root() -> Path:
+    return ROOT

@@ -1,0 +1,57 @@
+{
+  "table_name": "orders",
+  "description": "Synthetic order transactions loaded in append mode.",
+  "source": {
+    "format": "json",
+    "path": "sample_data/batch_1/orders.json",
+    "options": {}
+  },
+  "load_mode": "append",
+  "business_keys": [
+    "order_id"
+  ],
+  "tracked_columns": [],
+  "schema": [
+    {
+      "name": "order_id",
+      "type": "integer",
+      "nullable": false,
+      "required": true
+    },
+    {
+      "name": "customer_id",
+      "type": "integer",
+      "nullable": false,
+      "required": true
+    },
+    {
+      "name": "amount",
+      "type": "decimal",
+      "nullable": false,
+      "required": true
+    },
+    {
+      "name": "order_date",
+      "type": "date",
+      "nullable": false,
+      "required": true
+    }
+  ],
+  "quality_rules": [
+    {
+      "rule": "not_null",
+      "columns": [
+        "order_id",
+        "customer_id",
+        "amount",
+        "order_date"
+      ]
+    },
+    {
+      "rule": "unique",
+      "columns": [
+        "order_id"
+      ]
+    }
+  ]
+}

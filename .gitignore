@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Virtual environments and secrets
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Runtime outputs / local lakehouse data
+logs/
+lakehouse/
+delta/
+warehouse/
+checkpoints/
+spark-warehouse/
+metastore_db/
+derby.log
+*.log
+.ipynb_checkpoints/
+
+# Keep synthetic CSV/JSON sample data under version control.
